@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using jquery</title>  
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/43857058-E490-6C41-9C37-D73DA152EA06/main.js" charset="UTF-8"></script></head>
+<body>
+    <div class="container">
+            
+        <p  class="alert alert-success" style="display:none">Result = <span id="res"></span>
+        
+        </p>
+      
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="number" class="form-control" id="num1">
+                </div>
+                <div class="col">
+                    <input type="number" class="form-control" id="num2">
+                </div>
+            </div>
+
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary" id="plus">+</button>
+
+                <button type="button" class="btn btn-secondary" id="minus">-</button>
+            </div>
+        </form>
+    </div>
+
+
+    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    // Insert your code here
+      
+      $("#plus").click(function () {
+          var num1=Number($("#num1").val());
+          var num2=Number($("#num2").val());
+          $("#res").text(num1+num2);
+          $("p").show();
+      })
+      
+      $("#minus").click(function () {
+          var num1=Number($("#num1").val());
+          var num2=Number($("#num2").val());
+          $("#res").text(num1-num2); 
+          $("p").show();
+      })
+  
+  
+  });
+      
+    
+</script>
+</body>
+</html>

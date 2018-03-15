@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using jquery</title>  
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/43857058-E490-6C41-9C37-D73DA152EA06/main.js" charset="UTF-8"></script></head>
+<body>
+    <div class="container">
+    <p>
+        <strong>Chapter 1.</strong>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum rhoncus eros. Etiam enim diam, faucibus ac ultricies non, blandit ac tellus. Sed cursus feugiat erat ut rutrum. Vestibulum et hendrerit arcu. Proin sapien nulla, vulputate ut erat nec, consequat dapibus eros. Phasellus ut lorem quis sapien bibendum finibus id sed lectus. Etiam pulvinar ligula et mi volutpat ultricies. Ut sit amet nisl in est interdum euismod. Etiam aliquet turpis quis risus malesuada varius. Donec facilisis tristique sem, vel dictum nulla congue id. 
+    </p>
+    
+    <p>
+        <strong>Chapter 2.</strong>
+        Fusce in nibh id velit tincidunt aliquam elementum eu dui. Mauris maximus lacus risus, scelerisque elementum arcu porttitor nec. Vivamus vel malesuada diam. Quisque commodo nibh nec sapien congue lobortis. Aliquam libero augue, efficitur porta pharetra vitae, sodales ut nulla. Pellentesque euismod varius ex, eu molestie sem vehicula at. Cras at ante tristique, feugiat mi sed, egestas mauris. Aenean lacus sem, dignissim ac nisl eu, congue iaculis leo
+    </p>
+    
+    <button type="button" class="btn btn-light" id="btn-tgl">Toggle Chapter 1</button>
+    <button type="button" class="btn btn-light" id="btn-fade">Fade out both</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script>
+  $(document).ready(function() {
+    // Insert your code here
+      
+    $("#btn-tgl").click(function(){
+    $("p:first").toggle();
+    });
+      
+    $("#btn-fade").click(function(){
+    $("p").fadeOut();
+    });
+    
+      
+  });
+</script>
+</body>
+</html>

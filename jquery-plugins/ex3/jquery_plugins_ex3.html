@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using jquery</title>  
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<link href="nanogallery2.min.css" rel="stylesheet" type="text/css"><link href="nanogallery2.woff.min.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+    <div id="my_nanogallery2"></div>
+    
+    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script type="text/javascript" src="jquery.nanogallery2.min.js"></script>
+
+ 
+
+<script>
+  $(document).ready(function() {
+    // Insert your code here
+      $("#my_nanogallery2").nanogallery2({
+  	items:[
+    	{	src: 'solarsystem.jpg',
+            srct: 'solarsystem.jpg',
+            title: 'Solar System'},
+        
+        {   src: 'neptune.jpg',
+            srct: 'neptune.jpg', 
+            title: 'Neptune' },
+        
+        {   src: 'saturn1.jpg', 
+            srct: 'saturn1.jpg', 
+            title: 'Saturn' },
+        
+        {   src: 'marsphases.jpg', 
+            srct: 'marsphases.jpg', 
+            title: 'Mars Phases' },
+        
+        {   src: 'jupiter_io.jpg', 
+            srct: 'jupiter_io.jpg', 
+            title: 'Jupiter with moon Io' },
+        
+        {   src: 'mercury.jpg', 
+            srct: 'mercury.jpg', 
+            title: 'Mercury' }
+		],
+          
+    thumbnailWidth:  'auto',
+  	thumbnailHeight: 300,
+    
+        
+  });
+
+      
+  });
+</script>
+</body>
+</html>

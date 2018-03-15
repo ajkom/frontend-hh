@@ -1,0 +1,23 @@
+1)
+a)$("p")
+b) $("p:first")
+c) $("#info")
+
+2) 
+$("p:first").text("here is the changed text");
+$("p:first").append(" and some more text goes here");
+$("p").css("color", "red");
+
+3)
+$("p:first").click(function () {					$("p:first").hide();
+});
+          
+$("p").dblclick(function () {
+	$("p").hide();
+});
+          
+$("button").click(function () {
+	$("p").hide();
+	$("button").text("Pressed");
+	alert($("p:first").text());
+});

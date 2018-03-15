@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Exercises</title>
+  
+    <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <style>
+        
+        .flex-container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .flex-container > div {
+            width:140px;
+            /*height:150px;*/
+            border: 1px solid black;
+            margin: 10px;
+            text-align: center;
+            padding: 50px 5px 50px 5px;
+        }
+        
+        @media screen and (max-width: 600px)  {
+            .flex-container {
+                flex-flow: column wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .flex-container > div {
+            width:200px;
+            border: 1px solid black;
+            margin: 10px;
+            text-align: center;
+            padding: 50px 5px 50px 5px;
+        }
+        }   
+
+    </style>
+    
+</head>
+    
+<body>
+ 
+    <div class="flex-container">
+        <div>This is the first section</div>
+        <div>Here is some more text</div>
+        <div>Text continues in this section</div>
+        <div>Is there more coming?</div>
+        <div>This is the final section</div>
+
+    </div> 
+
+    
+
+    
+</body>
+</html>
