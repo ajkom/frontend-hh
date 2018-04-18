@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
+import { ToastContainer, toast } from 'react-toastify';
+
+
 import AddCustomer from './AddCustomer';
 
 
@@ -11,6 +16,7 @@ class CustomerList extends Component {
     this.loadCustomers();
   }
 
+// load customers from API
   loadCustomers = () => {
     fetch('https://customerrest.herokuapp.com/api/customers')
     .then((response) => response.json())
@@ -21,6 +27,7 @@ class CustomerList extends Component {
   });
   }
 
+//add new customer
   addCustomer(customer) {
     fetch('https://customerrest.herokuapp.com/api/customers',
     {   method: 'POST',
@@ -33,6 +40,35 @@ class CustomerList extends Component {
     .catch(err => console.error(err))
   }
 
+  //
+  showTrainings = (idLink) => {
+    alert("button pressed but no idea yet")
+  }
+
+// delete a customer
+onDelClick = (idLink) => {
+  confirmAlert({
+    title: '',
+    message: 'Are you sure you want to delete lalalal?',
+    /*confirmLabel: 'yep',
+    cancelLabel: 'nope',*/
+    onConfirm: () => {
+      fetch(idLink, {method: 'DELETE'})
+      .then(console.log("button pressed"))
+
+      .then(res => this.loadCustomers())
+      .catch(err => console.error(err))
+
+      toast.success("Delete succeed", {
+        position: toast.POSITION.BOTTOM_LEFT
+      });
+    }
+  })
+/*  fetch(idLink, {method: 'DELETE'})
+  .then(res => this.loadCustomers())
+  .then(console.log("button pressed"))
+  .catch(err => console.error(err))*/
+}
 
 
   render() {
@@ -71,6 +107,24 @@ class CustomerList extends Component {
             Header: 'Phone number',
             accessor: 'phone'
           },
+          {
+            Header: 'Trainings',
+            id: 'button',
+            sortable: false,
+            filterable: false,
+            width: 100,
+            accessor: 'links[2].href',
+            Cell: ({value}) => (<button className="btn btn-default btn-link"
+            onClick={()=>{this.showTrainings(value)}}>Show</button>)
+          },
+          {
+            id: 'button',
+            sortable: false,
+            filterable: false,
+            width: 100,
+            accessor: 'links[0].href',
+            Cell: ({value}) => (<button className="btn btn-default btn-link" onClick={()=>{this.onDelClick(value)}}>Delete</button>)
+          }
         ]}
 
 
@@ -80,6 +134,7 @@ class CustomerList extends Component {
         filterable
         className="-highlight" >
       </ReactTable>
+      <ToastContainer autoClose={2000}/>
 
 
 

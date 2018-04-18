@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
 import CustomerList from './CustomerList';
 import TrainingList from './TrainingList';
-import Homepage from './Homepage';
+//import Homepage from './Homepage';
 
 
 class App extends Component {
