@@ -48,26 +48,27 @@ class CustomerList extends Component {
 // delete a customer
 onDelClick = (idLink) => {
   confirmAlert({
-    title: '',
-    message: 'Are you sure you want to delete lalalal?',
-    /*confirmLabel: 'yep',
-    cancelLabel: 'nope',*/
-    onConfirm: () => {
-      fetch(idLink, {method: 'DELETE'})
-      .then(console.log("button pressed"))
+    title: 'Confirm to submit',
+    message: 'Are you sure you want to delete?',
+    buttons: [
+      {
+        label: 'Yes',
+        onClick:() => {
+          fetch(idLink, {method: 'DELETE'})
+        .then(res => this.loadCustomers())
+        .catch(err => console.error(err))
 
-      .then(res => this.loadCustomers())
-      .catch(err => console.error(err))
-
-      toast.success("Delete succeed", {
-        position: toast.POSITION.BOTTOM_LEFT
-      });
-    }
+        toast.success("Delete succeed", {
+          position: toast.POSITION.BOTTOM_LEFT
+        });
+        }
+      },
+      {
+        label: 'No',
+        onClick: () => alert('Cancelled')
+      }
+    ]
   })
-/*  fetch(idLink, {method: 'DELETE'})
-  .then(res => this.loadCustomers())
-  .then(console.log("button pressed"))
-  .catch(err => console.error(err))*/
 }
 
 
