@@ -22,7 +22,6 @@ class TrainingList extends Component {
       this.setState({
         trainings: responseData,
       });
-      console.log(this.state.trainings)
   });
   }
 
@@ -42,7 +41,6 @@ class TrainingList extends Component {
 
   // delete a training
   onDelClick = (idLink) => {
-    console.log(idLink);
     confirmAlert({
       title: 'Confirm to submit',
       message: 'Are you sure you want to delete?',
@@ -84,13 +82,26 @@ class TrainingList extends Component {
             accessor: 'duration'
           },
           {
+            id: 'trainingDate',
             Header: 'Date',
-            accessor: 'date'
+            accessor: d => {
+              let x = new Date(d.date)
+              let dd = x.getDate();
+              let mm = x.getMonth() +1;
+              let yyyy= x.getFullYear();
+              let date = (new Date(yyyy, mm, dd)).toISOString().split('T')[0]
+              return date
+            }
           },
           {
             id: 'customerName',
             Header: 'Customer',
-            accessor: 'customer.lastname'
+            accessor: n => {
+              //console.log(n.customer)
+              if (n.customer != null) {
+              return n.customer.lastname+', '+n.customer.firstname
+              } else return (n.customer)
+            }
           },
           {
             id: 'button',
