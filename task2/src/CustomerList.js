@@ -5,7 +5,6 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { ToastContainer, toast } from 'react-toastify';
 
-
 import AddCustomer from './AddCustomer';
 
 
@@ -41,8 +40,11 @@ class CustomerList extends Component {
   }
 
   //
-  showTrainings = (idLink) => {
-    alert("button pressed but no idea yet")
+  showTrainings = (smth) => {
+    alert(smth)
+    //fetch(idLink)
+    //.then((response) => response.json())
+
   }
 
 // delete a customer
@@ -107,16 +109,6 @@ onDelClick = (idLink) => {
           {
             Header: 'Phone number',
             accessor: 'phone'
-          },
-          {
-            Header: 'Trainings',
-            id: 'button',
-            sortable: false,
-            filterable: false,
-            width: 100,
-            accessor: 'links[2].href',
-            Cell: ({value}) => (<button className="btn btn-default btn-link"
-            onClick={()=>{this.showTrainings(value)}}>Show</button>)
           },
           {
             id: 'button',
