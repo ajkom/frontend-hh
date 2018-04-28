@@ -16,7 +16,6 @@ class CustomerList extends Component {
       this.setState({
         customers: responseData.content,
       });
-      console.log(this.state.customers)
   });
   }
 

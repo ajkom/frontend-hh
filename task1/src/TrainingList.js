@@ -10,13 +10,12 @@ class TrainingList extends Component {
   }
 
   loadTrainings = () => {
-    fetch('https://customerrest.herokuapp.com/api/trainings')
+    fetch('https://customerrest.herokuapp.com/gettrainings')
     .then((response) => response.json())
     .then((responseData) => {
       this.setState({
-        trainings: responseData.content,
+        trainings: responseData,
       });
-      console.log(this.state.trainings)
   });
   }
 
@@ -26,28 +25,35 @@ class TrainingList extends Component {
       <ReactTable data={this.state.trainings}
         columns={[
           {
-            Header: 'Date',
-            accessor: 'date'
-
+            Header: 'Activity',
+            accessor: 'activity'
           },
           {
             Header: 'Duration',
             accessor: 'duration'
           },
           {
-            Header: 'Activity',
-            accessor: 'activity'
+            id: 'trainingDate',
+            Header: 'Date',
+            accessor: d => {
+              let x = new Date(d.date)
+              let dd = x.getDate();
+              let mm = x.getMonth() +1;
+              let yyyy= x.getFullYear();
+              let date = (new Date(yyyy, mm, dd)).toISOString().split('T')[0]
+              return date
+            }
           },
-        /*  {
+          {
             id: 'customerName',
             Header: 'Customer',
-            accessor: d => d.links[0].href
-          }*/
+            accessor: n => {
+              if (n.customer != null) {
+              return n.customer.lastname+', '+n.customer.firstname
+              } else return (n.customer)
+            }
+          }
         ]}
-
-
-
-
 
         filterable
         className="-highlight" >
