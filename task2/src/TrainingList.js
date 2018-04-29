@@ -97,7 +97,6 @@ class TrainingList extends Component {
             id: 'customerName',
             Header: 'Customer',
             accessor: n => {
-              //console.log(n.customer)
               if (n.customer != null) {
               return n.customer.lastname+', '+n.customer.firstname
               } else return (n.customer)
@@ -112,10 +111,6 @@ class TrainingList extends Component {
             Cell: ({value}) => (<button className="btn btn-default btn-link" onClick={()=>{this.onDelClick(value)}}>Delete</button>)
           }
         ]}
-
-
-
-
 
         filterable
         className="-highlight" >
