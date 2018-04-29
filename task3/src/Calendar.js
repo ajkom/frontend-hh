@@ -30,10 +30,11 @@ class Calendar extends Component {
     data.forEach((item) =>{
        const eventItem = {
         id: item.id,
-        title:item.activity+', '+item.duration,
-        start:moment(item.date).format('MM/DD/YYYY'),
-        end:moment(item.date).format('MM/DD/YYYY'),
-        desc:item.customer.lastname+', '+item.customer.firstname
+        title:item.activity+' ('+item.duration+' minutes)',
+        start:new Date (moment(item.date).format('MM/DD/YYYY')),
+        end: new Date (moment(item.date).format('MM/DD/YYYY')),
+        desc:item.customer.lastname+', '+item.customer.firstname,
+        allDay: true
       };
       this.setState({
         events: [...this.state.events, eventItem]
@@ -54,7 +55,7 @@ class Calendar extends Component {
       <BigCalendar
       style={{height:600}}
       events={this.state.events}
-      views={['month', 'week', 'day', 'agenda']}
+      views={['month', 'week', 'day']}
       step={60}
       showMultiDayTimes
       />
