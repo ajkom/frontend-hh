@@ -30,7 +30,7 @@ class Calendar extends Component {
     data.forEach((item) =>{
        const eventItem = {
         id: item.id,
-        title:item.activity+' ('+item.duration+' minutes)',
+        title:item.activity+' ('+item.duration+'), '+item.customer.lastname,
         start:new Date (moment(item.date).format('MM/DD/YYYY')),
         end: new Date (moment(item.date).format('MM/DD/YYYY')),
         desc:item.customer.lastname+', '+item.customer.firstname,
@@ -40,7 +40,6 @@ class Calendar extends Component {
         events: [...this.state.events, eventItem]
       });
     })
-  //  console.log(this.state.events);
   }
 
 
