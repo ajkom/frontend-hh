@@ -88,12 +88,12 @@ class Login extends Component {
                         <button onClick={this.resetPassword} className="btn btn-link float-left">Forgot password?</button>
                         <button onClick={this.onLoginClick} className="btn btn-success btn-lg float-right">Login</button>
                       </form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         <ToastContainer />
       </div>
     );

@@ -36,7 +36,6 @@ class App extends Component {
     firebaseAuth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
         this.setState({ user: user, isAuthenticated: true, email: user.email });
-        console.log("login");
       }
       else {
         this.setState({ user: null, isAuthenticated: false, email:null });
