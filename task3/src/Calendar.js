@@ -51,14 +51,15 @@ class Calendar extends Component {
     if (this.state.events.length === 0) return null
 
     return (
-
-      <BigCalendar
-      style={{height:600}}
-      events={this.state.events}
-      views={['month', 'week', 'day']}
-      step={60}
-      showMultiDayTimes
-      />
+      <div style={{padding:20}}>
+        <BigCalendar
+        style={{height:600}}
+        events={this.state.events}
+        views={['month', 'week', 'day']}
+        step={60}
+        showMultiDayTimes
+        />
+      </div>
     )
   }
 }

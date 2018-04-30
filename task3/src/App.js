@@ -3,11 +3,10 @@ import './App.css';
 import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 import CustomerList from './CustomerList';
 import TrainingList from './TrainingList';
 import Calendar from './Calendar';
-
+import Navigator from './Navigator';
 
 class App extends Component {
 
@@ -20,25 +19,14 @@ class App extends Component {
 
         <BrowserRouter>
           <div>
-            <Link to="/customers">Customers</Link>{' '}
-            <Link to="/trainings">Trainings</Link>{' '}
-            <Link to="/calendar">Calendar</Link>{' '}
-
+            <Navigator />
             <Switch>
               <Route path = "/customers" component={CustomerList} />
               <Route path = "/trainings" component={TrainingList} />
               <Route exact path = "/calendar" component={Calendar} />
-
             </Switch>
           </div>
         </BrowserRouter>
-
-
-
-
-
-      {  /*<CustomerList />
-        <TrainingList />*/}
       </div>
     );
   }
