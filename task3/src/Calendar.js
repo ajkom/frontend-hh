@@ -40,7 +40,7 @@ class Calendar extends Component {
         events: [...this.state.events, eventItem]
       });
     })
-    console.log(this.state.events);
+  //  console.log(this.state.events);
   }
 
 

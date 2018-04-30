@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Link} from 'react-router-dom';
+import { firebaseAuth } from './config';
 require( 'bootstrap/dist/js/bootstrap.min.js');
 
 class Navigator extends Component {
+  logout = () => {
+    return firebaseAuth().signOut()
+  }
 
   render() {
-    return (
 
+    let logLink = null;
+    if (this.props.isAuthenticated)
+      logLink = <button className="btn btn-link" onClick={this.logout}>Logout</button>;
+    else
+      logLink = <Link className="nav-link" to="/login">Login</Link>;
+
+    return (
+      <div>
       <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container-fluid">
           <div className="navbar-header">
@@ -30,9 +41,13 @@ class Navigator extends Component {
                 <Link className="nav-link" to="/calendar">Calendar</Link>
               </li>
             </ul>
+            <ul className="navbar-nav ml-auto">
+              {logLink}
+            </ul>
           </div>
         </div>
       </nav>
+      </div>
     );
   }
 }

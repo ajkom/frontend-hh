@@ -1,14 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import CustomerList from './CustomerList';
 import TrainingList from './TrainingList';
 import Calendar from './Calendar';
 import Navigator from './Navigator';
+import Login from './Login';
+
+import { firebaseAuth } from './config';
+
+
+const PrivateRoute = ({ component: Component, ...rest, isAuthenticated }) => (
+  <Route {...rest} render={props => (
+    isAuthenticated ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {user: null, email: null, isAuthenticated : false};
+  }
+
+  componentDidMount() {
+    firebaseAuth().onAuthStateChanged((user) => {
+      if (user && user.emailVerified) {
+        this.setState({ user: user, isAuthenticated: true, email: user.email });
+        console.log("login");
+      }
+      else {
+        this.setState({ user: null, isAuthenticated: false, email:null });
+      }
+    });
+  }
 
   render() {
     return (
@@ -19,11 +53,12 @@ class App extends Component {
 
         <BrowserRouter>
           <div>
-            <Navigator />
+            <Navigator isAuthenticated={this.state.isAuthenticated} />
             <Switch>
-              <Route path = "/customers" component={CustomerList} />
-              <Route path = "/trainings" component={TrainingList} />
-              <Route exact path = "/calendar" component={Calendar} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path = "/customers" component={CustomerList} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path = "/trainings" component={TrainingList} />
+              <PrivateRoute isAuthenticated={this.state.isAuthenticated} path = "/calendar" component={Calendar} />
+              <Route path="/login" component={Login} />
             </Switch>
           </div>
         </BrowserRouter>
