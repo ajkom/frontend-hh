@@ -36,9 +36,13 @@ class App extends Component {
     firebaseAuth().onAuthStateChanged((user) => {
       if (user && user.emailVerified) {
         this.setState({ user: user, isAuthenticated: true, email: user.email });
+        document.getElementById("greeting").style.display="block";
+        document.getElementById("loggedoff").style.display="none";
       }
       else {
         this.setState({ user: null, isAuthenticated: false, email:null });
+        document.getElementById("greeting").style.display="none";
+        document.getElementById("loggedoff").style.display="block";
       }
     });
   }
@@ -61,6 +65,16 @@ class App extends Component {
             </Switch>
           </div>
         </BrowserRouter>
+      
+      <div id="greeting" className='jumbotron' style={{display:'none'}}>
+          <h3>Welcome to the Personal Trainer, {this.state.email}!</h3>
+          <h4>You can see what we have to offer</h4>
+        </div>
+
+        <div id="loggedoff" className='jumbotron' style={{display:'block'}}>
+          <h3>Welcome to the Personal Trainer!</h3>
+          <h4>Please, login to see what we have to offer</h4>
+        </div>
       </div>
     );
   }
